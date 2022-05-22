@@ -1,0 +1,34 @@
+Create a Skincare Company Database
+
+CREATE TABLE skincare (id INTEGER PRIMARY KEY, name TEXT, product_type TEXT, skin_type TEXT, price INTEGER);
+
+INSERT INTO skincare VALUES (1, "Cleansing Balm", "Cleanser", "All Types", 17);
+INSERT INTO skincare VALUES (2, "AHA_BHA Cleanser", "Cleanser", "Oily", 36);
+INSERT INTO skincare VALUES (3, "Oat Cleanser", "Cleanser", "Sensitive", 34);
+INSERT INTO skincare VALUES (4, "Vitamin C", "Serum", "All Types", 48);
+INSERT INTO skincare VALUES (5, "Retinol", "Serum", "Anti Aging", 62);
+INSERT INTO skincare VALUES (6, "Pore Perfect Serum", "Serum", "Oily", 42);
+INSERT INTO skincare VALUES (7, "Hyaluronic Acid Serum", "Serum", "Dry", 25);
+INSERT INTO skincare VALUES (8, "Daily Moisturizer", "Moisturizer", "All Types", 19);
+INSERT INTO skincare VALUES (9, "Rich Moisturizer", "Moisturizer", "Dry", 27);
+INSERT INTO skincare VALUES (10, "Exfoliating Mask", "Mask", "All Types", 33);
+INSERT INTO skincare VALUES (11, "Intense Moisturizer", "Moisturizer", "Dry", 36);
+INSERT INTO skincare VALUES (12, "Vitamin C Eye Serum", "Serum", "Anti Aging", 36);
+INSERT INTO skincare VALUES (13, "Repair Masque", "Mask", "Dry", 40);
+INSERT INTO skincare VALUES (14, "Squalane Oil", "Oil", "All Types", 30);
+INSERT INTO skincare VALUES (15, "Retinol Oil", "Oil", "Anti Aging", 38);
+
+Display the database ordered by price.
+SELECT * FROM skincare 
+ORDER BY price;
+
+What is the avg price of items for all skin types?
+SELECT AVG(price) AS "avg price all types"
+FROM skincare
+WHERE skin_type = "All Types";
+
+What items are under $35?
+
+SELECT * 
+FROM skincare 
+WHERE price < 35;
