@@ -1,0 +1,64 @@
+Create table of celebrities including their highest grossing film and films they share.
+
+CREATE TABLE celebrities (
+    id INTEGER PRIMARY KEY, 
+    name TEXT, 
+    age INTEGER);
+
+INSERT INTO celebrities VALUES (1, "Brad Pitt", "58");
+INSERT INTO celebrities VALUES (2, "Angelina Jolie", 46);
+INSERT INTO celebrities VALUES (3, "Leonardo Dicaprio", 47);
+INSERT INTO celebrities VALUES (4, "Channing Tatum", 42);
+INSERT INTO celebrities VALUES (5, "Ben Affleck", 49);
+INSERT INTO celebrities VALUES (6, "Sandra Bullock", "57");
+INSERT INTO celebrities VALUES (7, "Margot Robbie", "31");
+
+CREATE TABLE highest_gross (id INTEGER PRIMARY KEY, person_id INTEGER, movie_name TEXT, gross_amount INTEGER);
+
+INSERT INTO highest_gross VALUES (1, 1, "World War Z", 540000000);
+INSERT INTO highest_gross VALUES (2, 2, "Maleficent", 758000000);
+INSERT INTO highest_gross VALUES (3, 3, "Titanic", 2000000000);
+INSERT INTO highest_gross VALUES (4, 4, "Kingsman", 634000000);
+INSERT INTO highest_gross VALUES (5, 5, "Good Will Hunting", 226000000);
+INSERT INTO highest_gross VALUES (6, 6, "Minions", 1000000000);
+INSERT INTO highest_gross VALUES (7, 7, "Suicide Squad", 167000000);
+
+CREATE TABLE movie_duo (id INTEGER PRIMARY KEY, person1_id INTEGER, person2_id INTEGER, movie TEXT);
+
+INSERT INTO movie_duo VALUES (1, 1, 2, "Mr and Mrs Smith");
+INSERT INTO movie_duo VALUES (2, 1, 3, "Once Upon a Time in Hollywood");
+INSERT INTO movie_duo VALUES (3, 6, 7, "Whiskey Tango Foxtrot");
+INSERT INTO movie_duo VALUES (4, 5, 6, "Forces of Nature");
+INSERT INTO movie_duo VALUES (5, 4, 6, "The Lost City of Z");
+
+List each celebrity name with the corresponding highest grossing film.
+
+SELECT c.name, hg.movie_name
+FROM celebrities as c
+JOIN highest_gross as hg
+ON c.id = hg.id;
+
+What is the celebrity name, movie title, and amount for the highest grossing film in the table?
+
+SELECT c.name, hg.movie_name, MAX(hg.gross_amount) as highest_gross
+FROM celebrities as c
+JOIN highest_gross as hg
+ON c.id = hg.id;
+
+List the celebrity names and movie title of those starring in a movie together.
+
+SELECT a.name, b.name, md.movie
+FROM movie_duo as md
+JOIN celebrities as a
+ON a.id = md.person1_id
+JOIN celebrities as b
+ON b.id = md.person2_id;
+
+List the movie name and gross amount for Brad Pitt's highest grossing film.
+
+SELECT c.name, hg.movie_name, hg.gross_amount
+FROM celebrities as c
+JOIN highest_gross as hg
+ON c.id = hg.id
+WHERE c.name = "Brad Pitt";
+
