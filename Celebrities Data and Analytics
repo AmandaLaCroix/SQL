@@ -1,4 +1,4 @@
-Create table of celebrities including their highest grossing film and films they share.
+Create a celebrity database including their highest grossing film and films they share.
 
 CREATE TABLE celebrities (
     id INTEGER PRIMARY KEY, 
